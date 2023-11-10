@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2023-11-10T15:21:16 IST" name="Gradle suite" finished-at="2023-11-10T15:21:43 IST" duration-ms="27465">
+    <groups>
+    </groups>
+    <test started-at="2023-11-10T15:21:16 IST" name="Gradle test" finished-at="2023-11-10T15:21:43 IST" duration-ms="27465">
+      <class name="qtriptest.tests.testCase_01">
+        <test-method is-config="true" signature="createDriver()[pri:0, instance:qtriptest.tests.testCase_01@6cd28fa7]" started-at="2023-11-10T15:21:13 IST" name="createDriver" finished-at="2023-11-10T15:21:16 IST" duration-ms="2930" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createDriver -->
+        <test-method signature="TestCase01(java.lang.String,java.lang.String)[pri:0, instance:qtriptest.tests.testCase_01@6cd28fa7]" started-at="2023-11-10T15:21:17 IST" name="TestCase01" description="Verify user registration - login - logout" data-provider="qtripData" finished-at="2023-11-10T15:21:27 IST" duration-ms="9188" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[testuser@gmail.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[abc@123]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TestCase01 -->
+        <test-method signature="TestCase01(java.lang.String,java.lang.String)[pri:0, instance:qtriptest.tests.testCase_01@6cd28fa7]" started-at="2023-11-10T15:21:27 IST" name="TestCase01" description="Verify user registration - login - logout" data-provider="qtripData" finished-at="2023-11-10T15:21:35 IST" duration-ms="8506" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[TESTUSER@gmail.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[123456.0]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TestCase01 -->
+        <test-method signature="TestCase01(java.lang.String,java.lang.String)[pri:0, instance:qtriptest.tests.testCase_01@6cd28fa7]" started-at="2023-11-10T15:21:35 IST" name="TestCase01" description="Verify user registration - login - logout" data-provider="qtripData" finished-at="2023-11-10T15:21:43 IST" duration-ms="8171" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[123_USER_low@gmail.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[QWERTY!!!!]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TestCase01 -->
+        <test-method is-config="true" signature="quirDriver()[pri:0, instance:qtriptest.tests.testCase_01@6cd28fa7]" started-at="2023-11-10T15:21:43 IST" name="quirDriver" finished-at="2023-11-10T15:21:44 IST" duration-ms="128" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- quirDriver -->
+      </class> <!-- qtriptest.tests.testCase_01 -->
+    </test> <!-- Gradle test -->
+  </suite> <!-- Gradle suite -->
+</testng-results>
