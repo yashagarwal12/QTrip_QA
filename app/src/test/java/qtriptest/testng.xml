@@ -7,10 +7,12 @@
 <parameter name="user" value="testUser"></parameter>
 <parameter name="pass" value="abc@123"></parameter>
 <groups>
-<include name="Login Flow" />
-<include name="Search and Filter flow" />
-<include name="Booking and Cancellation Flow" />
-<include name="Reliability Flow" />
+<run>
+<include name="Login Flow" ></include>
+<include name="Search and Filter flow" ></include>
+<include name="Booking and Cancellation Flow" ></include>
+<include name="Reliability Flow" ></include>
+</run>
 </groups>
 <classes>
 <class name="qtriptest.tests.testCase_01" />
