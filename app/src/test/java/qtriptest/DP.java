@@ -57,8 +57,22 @@ public class DP {
 
     }
 
-    @DataProvider(name="qtripData")
+    @DataProvider(name="TestCase01Data")
     public Object[][] TestCase01() throws IOException{
          return dpMethod("TestCase01");
+    }
+    @DataProvider(name="TestCase02Data")
+    public Object[][] TestCase02() throws IOException{
+         return dpMethod("TestCase02");
+    }
+
+    @DataProvider(name="TestCase03Data")
+    public Object[][] TestCase03() throws IOException{
+         return dpMethod("TestCase03");
+    }
+
+    @DataProvider(name="TestCase04Data")
+    public Object[][] TestCase04() throws IOException{
+         return dpMethod("TestCase04");
     }
 }

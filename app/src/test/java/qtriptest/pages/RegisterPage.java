@@ -35,7 +35,7 @@ public class RegisterPage {
         PageFactory.initElements(driver,this);
     }
     
-    public boolean verifyNavigateToRegister(){
+    public boolean verifyRegisteration(){
         return driver.getCurrentUrl().endsWith(REGISTER_PAGE) && register_head.isDisplayed();
     }
 

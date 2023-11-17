@@ -1,5 +1,6 @@
 package qtriptest.tests;
 import qtriptest.DP;
+import qtriptest.DriverSingleton;
 import qtriptest.pages.HomePage;
 import qtriptest.pages.LoginPage;
 import qtriptest.pages.RegisterPage;
@@ -20,39 +21,27 @@ import org.testng.asserts.SoftAssert;
 import java.net.URL;
 
 
-public class testCase_01 {
+public class testCase_01 extends BaseTest {
 
-    static RemoteWebDriver driver;
     public static String lastGeneratedUserName;
     String url="https://qtripdynamic-qa-frontend.vercel.app/";
 
-    @BeforeSuite(alwaysRun = true)
-    public static void createDriver() throws MalformedURLException  {
-        // Launch Browser using Zalenium
-        final DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setBrowserName(BrowserType.CHROME);
-        driver = new RemoteWebDriver(new URL("http://localhost:8082/wd/hub"), capabilities);
-        driver.manage().window().maximize();
-        System.out.println("createDriver()");
-    }
-    //
-
-    @Test(description="Verify user registration - login - logout",enabled = true,dataProvider = "qtripData", dataProviderClass =DP.class)
+    @Test(description="Verify user registration - login - logout",groups={"Login Flow"},enabled = true,dataProvider = "TestCase01Data", dataProviderClass =DP.class)
     //@Parameters({"user","pass"})
-    public void TestCase01(String UserName, String Password) throws InterruptedException{
-       SoftAssert SoftAssert = new SoftAssert();
-         boolean status;
-        HomePage homepage=new HomePage(driver);
-        RegisterPage register=new RegisterPage(driver);
-        LoginPage loginpage=new LoginPage(driver);
+    public void TestCase01(String UserName, String Password) throws InterruptedException, MalformedURLException{
+        SoftAssert SoftAssert = new SoftAssert();
+        boolean status;
+      
         homepage.navigateToHomePage(url);
-        homepage.registerBtn();
-        status=register.verifyNavigateToRegister();
+
+        homepage.selectOption("Register");
+
+        status=register.verifyRegisteration();
         Assert.assertTrue(status,"Unable to click on register btn");
 
         register.performRegister(UserName, Password, Password, true);
+
         lastGeneratedUserName=register.username;
-        System.out.println(lastGeneratedUserName);
         Thread.sleep(2000);
 
         status=loginpage.verifyNavigateToLogin();
@@ -64,16 +53,5 @@ public class testCase_01 {
         status= loginpage.logoutBtn();
         Assert.assertTrue(status,"Unable to logout");
 
-        /*homepage.registerBtn();
-        register.alreadyRegister(lastGeneratedUserName, pass, pass);
-        Thread.sleep(5000);*/
     }
-
-    @AfterSuite(alwaysRun = true)
-    public static void quirDriver(){
-        driver.quit();
-    }
-
-
-
 }
