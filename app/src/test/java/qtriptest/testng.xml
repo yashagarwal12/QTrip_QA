@@ -3,9 +3,6 @@
 <suite name="Test suite QTrip application">
 
 <test name="User Onboarding Flow">
-
-<parameter name="user" value="testUser"></parameter>
-<parameter name="pass" value="abc@123"></parameter>
 <groups>
 <run>
 <include name="Login Flow" ></include>

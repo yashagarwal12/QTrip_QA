@@ -19,16 +19,14 @@ public class testCase_03 extends BaseTest {
         boolean status;
 
         homepage.navigateToHomePage(url);
-        Thread.sleep(2000);
 
         homepage.selectOption("Register");
-        Thread.sleep(2000);
 
         status=register.verifyRegisteration();
         Assert.assertTrue(status,"Unable to click on register btn");
 
         register.performRegister(UserName, Password, Password, true);
-        Thread.sleep(2000);
+        
 
         lastGeneratedUserName=register.username;
 

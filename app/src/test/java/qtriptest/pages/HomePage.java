@@ -80,6 +80,7 @@ public class HomePage {
         try{
             Actions action =new Actions(driver);
             action.click(searchbar).sendKeys(searchbar,city).build().perform();
+            Thread.sleep(2000);
            
         wait.until(ExpectedConditions.textToBePresentInElement(result,city.trim()));
         action.click(resultLink).perform();

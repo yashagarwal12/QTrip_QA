@@ -75,6 +75,7 @@ public class AdventurePage {
     public boolean search(String adventure){
         try{
         action.click(searchbar).sendKeys(searchbar,adventure).build().perform();
+        Thread.sleep(2000);
         wait.until(ExpectedConditions.textToBePresentInElement(adventure_title, adventure.trim()));
         action.click(adventure_link).perform();
         wait.until(ExpectedConditions.urlContains("/pages/adventures/detail/?adventure"));
