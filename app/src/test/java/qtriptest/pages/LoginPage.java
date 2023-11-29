@@ -5,10 +5,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
+
+import qtriptest.SeleniumWrapper;
 public class LoginPage {
 
     private final static String LOGIN_PAGE="/pages/login";
     private final static String HOME_PAGE="https://qtripdynamic-qa-frontend.vercel.app/";
+    SeleniumWrapper sw=new SeleniumWrapper();
 
     @FindBy(name="email")
     WebElement email;
@@ -31,7 +34,6 @@ public class LoginPage {
 
     @FindBy(xpath  ="//*[@class='nav-link login register']")
     WebElement register_btn;
-
     @FindBy(xpath ="//*[@class='nav-link login']")
     WebElement login_btn;
 
@@ -46,10 +48,13 @@ public class LoginPage {
     }
 
     public void performLogin(String user, String pass) throws InterruptedException{
-       
-        email.sendKeys(user);
-        password.sendKeys(pass);
-        login.click();
+        boolean status;
+        sw.sendKeys(email, user, driver);
+        sw.sendKeys(password, pass, driver);
+        
+       // email.sendKeys(user);
+       // password.sendKeys(pass);
+        status= sw.click_btn(login,driver);
         Thread.sleep(2000);
     }
 
@@ -58,7 +63,8 @@ public class LoginPage {
     }
 
     public boolean logoutBtn(){
-        logout_btn.click();
+        boolean status;
+        status= sw.click_btn( logout_btn,driver);
        return login_btn.isDisplayed() && register_btn.isDisplayed();
     }
 }

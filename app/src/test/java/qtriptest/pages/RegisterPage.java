@@ -1,5 +1,6 @@
 package qtriptest.pages;
 
+import qtriptest.SeleniumWrapper;
 import java.util.Date;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebElement;
@@ -12,6 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class RegisterPage {
 
+    SeleniumWrapper sw=new SeleniumWrapper();
     private final static String REGISTER_PAGE="/pages/register/";
     RemoteWebDriver driver;
     public String username="";
@@ -49,20 +51,30 @@ public class RegisterPage {
         else{
             username=String.format("%s",user);
         }
-        email.sendKeys(username);
-        password.sendKeys(pass);
-        confirmpassword.sendKeys(cnfmpass);
-        register.click();
+        sw.sendKeys(email, username, driver);
+        sw.sendKeys(password, pass, driver);
+        sw.sendKeys(confirmpassword, cnfmpass, driver);
+       // email.sendKeys(username);
+        //password.sendKeys(pass);
+        //confirmpassword.sendKeys(cnfmpass);
+        boolean status;
+        status= sw.click_btn( register,driver);
         Thread.sleep(2000);
     }
 
 
     public void alreadyRegister(String user, String pass, String cnfmpass) throws InterruptedException{
         
-            email.sendKeys(user);
-            password.sendKeys(pass);
-            confirmpassword.sendKeys(cnfmpass);
-            register.click();
+        sw.sendKeys(email, username, driver);
+        sw.sendKeys(password, pass, driver);
+        sw.sendKeys(confirmpassword, cnfmpass, driver);
+           
+        //email.sendKeys(user);
+           // password.sendKeys(pass);
+           // confirmpassword.sendKeys(cnfmpass);
+            boolean status;
+            status= sw.click_btn( register,driver);
+            //register.click();
             Thread.sleep(2000);
             WebDriverWait wait=new WebDriverWait(driver,30);
             wait.until(ExpectedConditions.alertIsPresent());

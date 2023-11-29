@@ -9,6 +9,7 @@ import qtriptest.DP;
 import qtriptest.pages.HistoryPage;
 import java.util.ArrayList;
 import java.util.List;
+import com.relevantcodes.extentreports.LogStatus;
 
 public class testCase_04 extends BaseTest{
 
@@ -26,6 +27,13 @@ public class testCase_04 extends BaseTest{
 
         status=register.verifyRegisteration();
         Assert.assertTrue(status,"Unable to click on register btn");
+        if(status){
+          test.log(LogStatus.PASS, "PASS-click on register btn");
+         
+      }
+      else{
+          test.log(LogStatus.FAIL, "FAIL-click on register btn");
+      }
 
         register.performRegister(UserName, Password, Password, true);
         Thread.sleep(2000);
@@ -34,23 +42,56 @@ public class testCase_04 extends BaseTest{
 
         status=loginpage.verifyNavigateToLogin();
         Assert.assertTrue(status,"Unable to register");
+        if(status){
+          test.log(LogStatus.PASS, "PASS-register");
+         
+      }
+      else{
+          test.log(LogStatus.FAIL, "FAIL-register");
+
+      }
 
         loginpage.performLogin(lastGeneratedUserName, Password);
 
         Assert.assertTrue(status,"Unable to login");
+        if(status){
+          test.log(LogStatus.PASS, "PASS-login");
+         
+      }
+      else{
+          test.log(LogStatus.FAIL, "FAIL-login");
+      }
 
         status=booktrip(dataset1);
         softassert.assertTrue(status,"Booking is Unsuccessful");
+        if(status){
+          test.log(LogStatus.PASS, "PASS-Booking is successful");
+      }
+      else{
+          test.log(LogStatus.FAIL, "FAIL-Booking is Unsuccessful");
+      }
         homepage.selectOption("Home");
         Thread.sleep(2000);
 
         status=booktrip(dataset2);
         softassert.assertTrue(status,"Booking is Unsuccessful");
+        if(status){
+          test.log(LogStatus.PASS, "PASS-Booking is successful");
+      }
+      else{
+          test.log(LogStatus.FAIL, "FAIL-Booking is Unsuccessful");
+      }
         homepage.selectOption("Home");
         Thread.sleep(2000);
 
         status=booktrip(dataset3);
         Assert.assertTrue(status,"Booking is Unsuccessful");
+        if(status){
+          test.log(LogStatus.PASS, "PASS-Booking is successful");
+      }
+      else{
+          test.log(LogStatus.FAIL, "FAIL-Booking is Unsuccessful");
+      }
 
         List<String> transac_id=historyPage.showReservation();
        for(int i=0;i<transac_id.size();i++){
@@ -60,6 +101,7 @@ public class testCase_04 extends BaseTest{
         Thread.sleep(2000);
   
         loginpage.logoutBtn();
+        test.log(LogStatus.PASS,test.addScreenCapture(takeScreenshot(driver, "TC04-Completed", "TC04")));
 
        
 }

@@ -1,5 +1,6 @@
 
 package qtriptest.pages;
+import qtriptest.SeleniumWrapper;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.commons.math3.geometry.euclidean.twod.Line;
@@ -18,6 +19,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HistoryPage {
 
+  SeleniumWrapper sw=new SeleniumWrapper();
     Actions action;
     RemoteWebDriver driver;
     WebDriverWait wait;
@@ -42,7 +44,9 @@ public class HistoryPage {
         action=new Actions(driver);
     }
     public List<String> showReservation() throws InterruptedException{
-       reservation_btn.click();
+        boolean status;
+        sw.click_btn(reservation_btn, driver);
+      // reservation_btn.click();
        Thread.sleep(5000);
         List<String> transacId=new ArrayList<String>();
 

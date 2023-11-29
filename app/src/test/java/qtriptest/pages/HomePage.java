@@ -1,6 +1,7 @@
 package qtriptest.pages;
 
 
+import qtriptest.SeleniumWrapper;
 import javax.lang.model.util.ElementScanner6;
 import org.apache.commons.collections4.functors.ExceptionPredicate;
 import org.openqa.selenium.By;
@@ -17,6 +18,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class HomePage {
+    SeleniumWrapper sw=new SeleniumWrapper();
     RemoteWebDriver driver;
 
     @FindBy(xpath  ="//*[@class='nav-link login register']")
@@ -44,6 +46,8 @@ public class HomePage {
     WebElement resultLink;
 
     WebDriverWait wait;
+
+     
     // WebDriverWait wait=new WebDriverWait(driver, 30); 
 
 
@@ -55,20 +59,25 @@ public class HomePage {
 
     public void navigateToHomePage(String url){
         if(!driver.getCurrentUrl().equals(url)){
-            driver.get(url);
+            //driver.get(url);
+            sw.getURL(url, driver);
         }
     }
 
     public void selectOption(String option){
-
+        boolean status;
         if(option.equalsIgnoreCase("Register"))
-        register_btn.click();
+
+        status= sw.click_btn(register_btn,driver);
+       // register_btn.click();
 
         else if(option.equalsIgnoreCase("Login"))
-        login_btn.click();
+        status= sw.click_btn(login_btn,driver);
+       // login_btn.click();
 
         else if(option.equalsIgnoreCase("Home"))
-        home_btn.click();
+        status= sw.click_btn(home_btn,driver);
+        //home_btn.click();
 
         else
         System.out.println("Invalid Option:"+option);
@@ -83,9 +92,9 @@ public class HomePage {
             Thread.sleep(2000);
            
         wait.until(ExpectedConditions.textToBePresentInElement(result,city.trim()));
-        action.click(resultLink).perform();
+        status= sw.click_btn(resultLink,driver);
+      //  action.click(resultLink).perform();
         wait.until(ExpectedConditions.urlContains("/pages/adventures/"));
-        status= true;
         }catch(Exception E){
             wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//ul[@id='results']/h5")));
             status= false;

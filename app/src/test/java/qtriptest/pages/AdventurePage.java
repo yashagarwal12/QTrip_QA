@@ -1,5 +1,6 @@
 package qtriptest.pages;
 
+import qtriptest.SeleniumWrapper;
 import java.util.List;
 import com.google.common.util.concurrent.Service.Listener;
 import org.openqa.selenium.By;
@@ -16,6 +17,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AdventurePage {
+    SeleniumWrapper sw=new SeleniumWrapper();
     Actions action;
     RemoteWebDriver driver;
     WebDriverWait wait;
@@ -55,7 +57,9 @@ public class AdventurePage {
     }
 
     public String durationFilter(String durationtext){
-        action.click(duration).perform();
+        boolean status;
+        status= sw.click_btn(duration,driver);
+        //action.click(duration).perform();
         select=new Select(duration);
         select.selectByVisibleText(durationtext); 
         count=tiles.size(); 
@@ -64,7 +68,9 @@ public class AdventurePage {
     }
     public String categoryFilter(String categorytext) throws InterruptedException{
 
-         action.click(category).perform();
+        boolean status;
+        status= sw.click_btn(category,driver);
+        // action.click(category).perform();
          Thread.sleep(2000);
          select=new Select(category);
          select.selectByVisibleText(categorytext); 
@@ -73,11 +79,16 @@ public class AdventurePage {
     }
 
     public boolean search(String adventure){
+        boolean status;
         try{
+            
         action.click(searchbar).sendKeys(searchbar,adventure).build().perform();
         Thread.sleep(2000);
         wait.until(ExpectedConditions.textToBePresentInElement(adventure_title, adventure.trim()));
-        action.click(adventure_link).perform();
+        
+       
+        status= sw.click_btn(adventure_link,driver);
+        //action.click(adventure_link).perform();
         wait.until(ExpectedConditions.urlContains("/pages/adventures/detail/?adventure"));
         return true;
         }catch(Exception E){
@@ -86,8 +97,12 @@ public class AdventurePage {
     }
 
     public String clearFilter(){
-        duration_clear.click();
-        category_clear.click();
+
+        boolean status;
+        status= sw.click_btn(duration_clear,driver);
+        status= sw.click_btn(category_clear,driver);
+       // duration_clear.click();
+       // category_clear.click();
         count=tiles.size();
         return String.valueOf(count);
     }
